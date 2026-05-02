@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+export SPOTIFY_CLIENT_ID="yor client ID"
+export SPOTIFY_CLIENT_SECRET="your client secret"
+export BROWSER="chromium"
+
+TRACK_COUNT="${TRACK_COUNT:-50}"
+
+if [ "$#" -eq 0 ]; then
+  echo 'Usage: ./play <music genre/style>'
+  echo 'Example: ./play heavy metal'
+  exit 1
+fi
+
+GENRE="$*"
+
+go run main.go "$GENRE" "$TRACK_COUNT"
